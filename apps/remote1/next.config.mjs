@@ -10,6 +10,7 @@ const nextConfig = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           // specify exposed pages and components
+          // './AboutUs': './pages/about-us.tsx',
           './ProductPage': './pages/product.tsx',
           // './SomeComponent': './components/someComponent.js'
         },

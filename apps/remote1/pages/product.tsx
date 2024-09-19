@@ -1,11 +1,12 @@
 
-export default function ProductPage() {
-  return <h1>Product Page</h1>
+export default function ProductPage({ name }: { name: string }) {
+  return <h1>Product Page - {name}</h1>
 }
 
 export const getServerSideProps = async () => {
-  console.log('REMOTE getServerSideProps runs')
+  const name = 'Smith'
+  console.log('REMOTE getServerSideProps runs', name)
   return {
-    props: {},
+    props: { name },
   }
- }
+}

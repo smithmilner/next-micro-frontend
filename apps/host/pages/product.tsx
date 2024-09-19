@@ -1,11 +1,17 @@
 import { GetServerSideProps } from "next"
 import dynamic from "next/dynamic"
+import Layout from "../components/Layout"
 
 // @ts-ignore
 const RemoteProductPage = dynamic(() => import('remote/ProductPage'))
 
-export default function ProductPage(props: {}) {
-  return <RemoteProductPage {...props} />
+export default function ProductPage(props: { hello: string }) {
+  return (
+    <Layout>
+      {/* @ts-ignore */}
+      <RemoteProductPage {...props} />
+    </Layout>
+  )
 }
 
 export const getServerSideProps = async (ctx: GetServerSideProps) => {
@@ -18,6 +24,6 @@ export const getServerSideProps = async (ctx: GetServerSideProps) => {
   }
 
   return {
-    props: {},
+    props: { hello: 'world' },
   }
 }
