@@ -1,5 +1,14 @@
 import { NextFederationPlugin } from '@module-federation/nextjs-mf';
 
+
+const remotes = (isServer) => {
+  const location = isServer ? 'ssr' : 'chunks';
+  return {
+    // specify remotes
+    host: `host@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
+  };
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -12,12 +21,13 @@ const nextConfig = {
           // specify exposed pages and components
           // './AboutUs': './pages/about-us.tsx',
           './ProductPage': './pages/product.tsx',
-          // './SomeComponent': './components/someComponent.js'
+          './RemoteUserComponent': './components/RemoteUserComponent.tsx'
         },
         shared: {
           // specify shared dependencies
           // read more in Shared Dependencies section
         },
+        remotes: remotes(isServer),
       })
     );
 
