@@ -1,7 +1,7 @@
 
 import React from 'react';
-//@ts-ignore
-import { useUser } from 'host/UserContext';  // Import UserContext from host
+
+import { useUser } from 'host/UserContext';
 
 export default function RemoteUserComponent() {
   const { user, login, logout } = useUser();
